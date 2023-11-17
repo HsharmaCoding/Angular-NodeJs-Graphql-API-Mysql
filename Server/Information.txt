@@ -1,0 +1,103 @@
+1. Create package.json file 
+  > npm init
+
+2. Setup Type Script 
+  > npx --package typescript tsc --init
+
+3. Add some required packagees
+  > npm add typescript ts-node express cors nodemon
+  > npm add @types/cors @types/express @types/node
+
+4. Create two folders src and dist 
+
+5. Update tsconfig.json file with following changes  
+  > Uncomment the rootDir and set the folder 
+    > "rootDir": "./src"
+  > Uncomment the outFile and set the folder 
+    >  "outFile": "./dist",   
+  > Uncomment the below items.
+    > strictPropertyInitialization": true   
+    > "moduleResolution": "node10" 
+    > "experimentalDecorators": true                 
+    > "emitDecoratorMetadata": true    
+
+5 Add some more required packagees
+  > npm add typeorm mysql2 graphql express-graphql
+
+6. Update package.json file with Commands.
+    "scripts":{
+      "start": "node ./dist/index.js",
+      "dev": "nodemon ./src/index.ts",
+      "build":"tsc -p ."
+    }
+
+6. Command to run/build the project 
+  > npm run build
+  > npm run dev
+
+7. API will autocreate the user table in MySQL database, once we run the API. It's based on User entity. typeorm package provides facility to create packages.
+
+8. Informative videos 
+  > CRUD Tutorial - React, GraphQL, NodeJS, MySQL
+    > https://www.youtube.com/watch?v=fov5e6XJgwc
+    > https://www.youtube.com/watch?v=mdnQwlxiQ0Q
+    > https://www.youtube.com/watch?v=SXNrqCGT6uI
+    > https://www.youtube.com/watch?v=LAFSppcFppE
+  > Entity | @Entity() & @Column() | #4 | Node Js TypeORM MySql
+    > https://www.youtube.com/watch?v=5P2qq015CLU
+
+9. GraphQL Queries 
+  > Get all users 
+      query{
+        getAllUsers{
+          id
+          firstName
+          lastName
+          email
+          username
+          password
+          mobile
+          state
+          city    
+        }
+      }
+
+  > Get user by id 
+    {
+      getUserById(id: 1) {
+        id
+        firstName
+        lastName
+        email
+        username
+        password
+        mobile
+        state
+        city
+      }
+    }
+
+
+  > Create user
+      mutation{
+        createUser(firstName:"Mahesh",lastName:"Verma",email:"hsharma@cyzma.com",username:"hsharma",password:"123",mobile:"1234567890",state:"Gujarat",city:"Ahmedabad"){
+          successful
+          message    
+        }
+      }
+
+  > Update user
+    mutation{
+      updateUser(id:1, firstName:"Rahul",lastName:"Sharma",email:"hsharma@cyzma.com",username:"hsharma",password:"123",mobile:"1234567890",state:"Gujarat",city:"Ahmedabad"){
+      successful
+      message
+      }
+    }
+  
+  > Delete user 
+    mutation{
+      deleteUser(id:2){
+        successful
+        message    
+      }
+    }

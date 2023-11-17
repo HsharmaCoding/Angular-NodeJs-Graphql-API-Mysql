@@ -1,0 +1,37 @@
+1. How to use  bootstrap.
+    a. ngx-bootstrap
+        > It is designed wuth the help of angular native directory without jquery. 
+        > It is fully compatible with angular.
+        > npm install ngx-bootstrap --save 
+        > ng add ngx-bootstrap
+
+2. How to use bootsrtap icons.
+    I. Install Bootstrap Icons:
+    > First, you need to install the Bootstrap Icons package. You can use npm or yarn for this. Open your terminal and navigate to your Angular project directory, then run:
+    > npm install bootstrap-icons
+
+    II. Import the Icons:
+    > In your Angular project, you'll need to import the Bootstrap Icons CSS into your stylesheets. Open the styles.scss (or styles.css) file in your project and add the following line to import the Bootstrap Icons:
+    > @import '~bootstrap-icons/font/bootstrap-icons.css';
+
+    III. Use Icons in Components:
+    > Now you can use Bootstrap Icons in your Angular components. You can use them in your HTML templates as regular HTML tags with the bi class:
+    > <i class="bi bi-heart"></i>
+
+3.  Install Required Packages
+    > In your Angular project, you'll need to install the necessary packages. Use the Angular CLI or npm to install Apollo Client, which is a powerful GraphQL client for Angular.
+    > npm install apollo-angular apollo-angular-link-http apollo-client apollo-cache-inmemory graphql-tag graphql
+    > npm install @apollo/client graphql
+
+4. set fetchPolicy: 'network-only' to avoid catching. It will always give latest record from the database.
+
+    getUsers(): Observable<User[]> {
+        return this.apollo
+        .query<any>({
+            query: GET_USERS, // Replace with your actual GraphQL query
+            fetchPolicy: 'network-only', // Add this line
+        })
+        .pipe(
+            map((result) => result.data.getAllUsers) // Adjust based on your GraphQL schema
+        );
+    }
